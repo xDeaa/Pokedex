@@ -1,9 +1,11 @@
 package com.example.pokedex.pokemonList
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pokedex.data.Pokemons
+import com.example.pokedex.data.PokemonsResponse
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
@@ -16,7 +18,8 @@ class PokemonViewModel: ViewModel() {
 
     fun loadPokemons() {
         viewModelScope.launch {
-            _pokemonsList.postValue(repository.getPokemons())
+            val pokemons: List<Pokemons> = repository.getPokemons()?.pokemons.orEmpty()
+            _pokemonsList.postValue(pokemons)
         }
     }
 }

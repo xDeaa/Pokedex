@@ -1,7 +1,11 @@
 package com.example.pokedex.network
 
 import android.content.Context
+import com.example.pokedex.data.Pokemons
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -12,7 +16,10 @@ class Api(private val context: Context) {
         lateinit var INSTANCE: Api
     }
 
-    private val moshi = Moshi.Builder().build()
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
     private val okHttpClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor { chain ->
