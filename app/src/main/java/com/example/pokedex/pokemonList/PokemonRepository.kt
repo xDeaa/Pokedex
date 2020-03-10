@@ -1,5 +1,7 @@
 package com.example.pokedex.pokemonList
 
+import android.util.Log
+import com.example.pokedex.data.PokemonDetails
 import com.example.pokedex.data.PokemonsResponse
 import com.example.pokedex.network.Api
 
@@ -10,5 +12,11 @@ class PokemonRepository {
         val response = pokemonWebServices.getPokemons()
 
         return if (!response.pokemons.isEmpty()) response else null
+    }
+
+    suspend fun getPokemonsDetails(number: String): PokemonDetails? {
+        val response = pokemonWebServices.getPokemonDetails(number)
+
+        return response
     }
 }

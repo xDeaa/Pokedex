@@ -10,12 +10,12 @@ import com.example.pokedex.data.Pokemons
 import kotlinx.android.synthetic.main.item_pokemon.view.*
 import kotlin.properties.Delegates
 
-class PokemonListAdapter: RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>()
-     {
+class PokemonListAdapter : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>() {
 
     var list: List<Pokemons> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
     }
+    var onClickListener: (String) -> Unit = { }
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         holder.bind(list[position])
@@ -32,8 +32,18 @@ class PokemonListAdapter: RecyclerView.Adapter<PokemonListAdapter.PokemonViewHol
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(pokemon: Pokemons) {
-           itemView.pokemon_name.text = pokemon.name
-            Glide.with(this.itemView).load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png").circleCrop().into(this.itemView.pokemon_image)
+            val number = pokemon.details.split("/")[6]
+            itemView.cardView.setOnClickListener {
+                onClickListener.invoke(number)
+            }
+
+            val numberPokemon = number.padStart(3, '0')
+            itemView.pokemon_name.text = pokemon.name.capitalize()
+            itemView.pokemon_number.text = numberPokemon
+
+            Glide.with(this.itemView)
+                .load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numberPokemon}.png")
+                .circleCrop().into(this.itemView.pokemon_image)
         }
     }
 }

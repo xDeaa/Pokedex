@@ -1,6 +1,7 @@
 package com.example.pokedex.pokemonList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentPokemonListBinding
@@ -49,6 +51,11 @@ class PokemonListFragment : Fragment() {
         binding.apply {
             recyclerView.layoutManager = gridManager
             recyclerView.adapter = adapter
+
+            adapter.onClickListener = { pokemon ->
+                val action = PokemonListFragmentDirections.goToDetailsPokemon(pokemon)
+                findNavController().navigate(action)
+            }
         }
     }
 }
