@@ -1,5 +1,6 @@
 package com.example.pokedex.pokemonDetails
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide
 
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentDetailsPokemonBinding
+import com.example.pokedex.databinding.FragmentDetailsPokemonBindingImpl
 import com.example.pokedex.pokemonList.PokemonViewModel
 import kotlinx.android.synthetic.main.fragment_details_pokemon.*
 import kotlinx.android.synthetic.main.item_pokemon.pokemon_name
@@ -25,7 +27,7 @@ import kotlinx.android.synthetic.main.item_pokemon.pokemon_name
  */
 class PokemonDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentDetailsPokemonBinding
+    private lateinit var binding: FragmentDetailsPokemonBindingImpl
     private val args: PokemonDetailsFragmentArgs by navArgs()
 
     private val viewModel by lazy {
@@ -50,6 +52,7 @@ class PokemonDetailsFragment : Fragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,8 +61,16 @@ class PokemonDetailsFragment : Fragment() {
             pokemon_name.text = pokemonDetail.name.capitalize()
             pokemon_exp.text = "Base Exp : ${pokemonDetail.exp}"
             exp.progress = pokemonDetail.exp
-            pokemon_height.text = pokemonDetail.height.toString()
-            pokemon_weight.text = pokemonDetail.weight.toString()
+            pokemon_height.text = "${pokemonDetail.height.toDouble().times(10).div(100)} cm"
+            pokemon_weight.text = "${pokemonDetail.weight.toDouble().times(10).div(100)}"
+            val type1 = resources.getIdentifier("pokemon_types_${pokemonDetail.types[0].type.name}", "drawable", "com.example.pokedex")
+            pokemon_type_1.setImageResource(type1)
+            if(pokemonDetail.types.size > 1) {
+                val type2 = resources.getIdentifier("pokemon_types_${pokemonDetail.types[1].type.name}", "drawable", "com.example.pokedex")
+                pokemon_type_2.setImageResource(type2)
+            } else {
+                pokemon_type_2.setImageResource(0)
+            }
            /* pokemon_height.text = pokemonDetail.height.toString()
             pokemon_width.text = pokemonDetail.weight.toString()
             pokemon_exp.text = pokemonDetail.exp.toString()
@@ -73,10 +84,10 @@ class PokemonDetailsFragment : Fragment() {
         })
 
         viewModel.pokemonSpecies.observe(this, Observer { pokemonSpecies ->
-            val background = resources.getIdentifier("bg_${pokemonSpecies.color.name}", "mipmap", "com.example.pokedex")
+            val background = resources.getIdentifier("bg_${pokemonSpecies.color.name}", "drawable", "com.example.pokedex")
             frameLayout.setBackgroundResource(background)
 
-            pokemon_shape.text = pokemonSpecies.shape.name.capitalize()
+           // pokemon_shape.text = pokemonSpecies.shape.name.capitalize()
             /* pokemon_height.text = pokemonDetail.height.toString()
              pokemon_width.text = pokemonDetail.weight.toString()
              pokemon_exp.text = pokemonDetail.exp.toString()
@@ -90,12 +101,12 @@ class PokemonDetailsFragment : Fragment() {
         })
 
         binding.apply {
+            val pokemonBuilder = Glide.with(view).load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/${args.pokemonNumber?.padStart(3, '0')}.png")
+                .centerCrop()
 
-
-            //frameLayout.background = R.mipmap.bg_red
-            Glide.with(view)
-                .load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/${args.pokemonNumber?.padStart(3, '0')}.png")
-                .centerCrop().into(pokemonImage)
+            pokemonBuilder.into(pokemonImage)
+            pokemonBuilder.into(pokemonImgHeight)
+            pokemonBuilder.into(pokemonImgWeight)
         }
     }
 }

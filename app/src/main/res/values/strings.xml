@@ -7,7 +7,12 @@
     <string name="exp">Base Stats : </string>
     <string name="height">Height </string>
     <string name="weight">Weight </string>
-    <string name="shape">Shape </string>
+    <string name="about">About </string>
+    <string name="stats">Stats </string>
+    <string name="evol">Evolution </string>
+    <string name="title_activity_pokemon_details_about">PokemonDetailsAbout</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
