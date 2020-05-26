@@ -4,15 +4,27 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_pokemon">PokemonActivity</string>
-    <string name="exp">Base Stats : </string>
-    <string name="height">Height </string>
-    <string name="weight">Weight </string>
-    <string name="about">About </string>
-    <string name="stats">Stats </string>
+    <string name="about">Characteristics </string>
+    <string name="abilities">Abilities </string>
+    <string name="size">Size </string>
+    <string name="shape">Shape </string>
+    <string name="habitat">Habitat </string>
+    <string name="capture">Capt. Rate </string>
+    <string name="happiness">Base Happiness </string>
+    <string name="egg">Eggs Group </string>
+
+    <string name="stats">Base Stats </string>
+    <string name="exp">Base </string>
+    <string name="speed">Speed </string>
+    <string name="sp_defense">Sp. Def </string>
+    <string name="sp_attack">Sp. Atk </string>
+    <string name="defense">Defense </string>
+    <string name="attack">Attack </string>
+    <string name="hp">HP </string>
+
     <string name="evol">Evolution </string>
-    <string name="title_activity_pokemon_details_about">PokemonDetailsAbout</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+
+
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

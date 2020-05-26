@@ -20,6 +20,8 @@ data class PokemonDetails(
     @field:Json(name = "types")
     var types: List<PokemonTypes>,
     @field:Json(name = "abilities")
-    var abilities: List<PokemonAbilities>
+    var abilities: List<PokemonAbilities>,
+    @field:Json(name = "stats")
+    var stats: List<PokemonStats>
 
 ) : Serializable, Parcelable
