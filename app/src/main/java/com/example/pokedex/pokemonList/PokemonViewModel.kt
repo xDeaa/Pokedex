@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pokedex.data.PokemonDetails
+import com.example.pokedex.data.PokemonSpecies
 import com.example.pokedex.data.Pokemons
 import com.example.pokedex.data.PokemonsResponse
 import kotlinx.coroutines.MainScope
@@ -20,7 +21,8 @@ class PokemonViewModel: ViewModel() {
     private val _pokemonDetails = MutableLiveData<PokemonDetails>()
     val pokemonDetails: LiveData<PokemonDetails> = _pokemonDetails
 
-
+    private val _pokemonSpecies = MutableLiveData<PokemonSpecies>()
+    val pokemonSpecies: LiveData<PokemonSpecies> = _pokemonSpecies
 
     fun loadPokemons() {
         viewModelScope.launch {
@@ -33,6 +35,13 @@ class PokemonViewModel: ViewModel() {
         viewModelScope.launch {
             val pokemon: PokemonDetails = repository.getPokemonsDetails(number)!!
             _pokemonDetails.postValue(pokemon)
+        }
+    }
+
+    fun getPokemonSpecies(number: String) {
+        viewModelScope.launch {
+            val pokemon: PokemonSpecies = repository.getPokemonsSpecies(number)!!
+            _pokemonSpecies.postValue(pokemon)
         }
     }
 }

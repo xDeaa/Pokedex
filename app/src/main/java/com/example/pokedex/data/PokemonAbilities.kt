@@ -8,10 +8,7 @@ import java.io.Serializable
 
 @Parcelize
 @JsonClass(generateAdapter = true)
- data class PokemonTypes (
-    @field:Json(name="slot")
-    var number: Int,
-    @field:Json(name="type")
-    var type: PokemonDetailsName
-
+data class PokemonAbilities (
+    @field:Json(name="ability")
+    var ability: PokemonDetailsName
 ): Serializable, Parcelable

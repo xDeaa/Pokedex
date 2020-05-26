@@ -3,11 +3,30 @@
     <string name="list_pokemons">Liste Pokemons</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_pokemon">PokemonActivity</string>
+    <string name="about">Characteristics </string>
+    <string name="abilities">Abilities </string>
+    <string name="size">Size </string>
+    <string name="shape">Shape </string>
+    <string name="habitat">Habitat </string>
+    <string name="capture">Capt. Rate </string>
+    <string name="happiness">Base Happiness </string>
+    <string name="egg">Eggs Group </string>
+
+    <string name="stats">Base Stats </string>
+    <string name="exp">Base </string>
+    <string name="speed">Speed </string>
+    <string name="sp_defense">Sp. Def </string>
+    <string name="sp_attack">Sp. Atk </string>
+    <string name="defense">Defense </string>
+    <string name="attack">Attack </string>
+    <string name="hp">HP </string>
+
+    <string name="evol">Evolution </string>
+
+
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
-    <string name="hello_world">Hello Square World!</string>
 </resources>

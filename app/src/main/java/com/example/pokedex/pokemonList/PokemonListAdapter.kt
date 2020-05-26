@@ -43,7 +43,7 @@ class PokemonListAdapter : RecyclerView.Adapter<PokemonListAdapter.PokemonViewHo
 
             Glide.with(this.itemView)
                 .load("https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numberPokemon}.png")
-                .circleCrop().into(this.itemView.pokemon_image)
+                .centerCrop().into(this.itemView.pokemon_image)
         }
     }
 }
