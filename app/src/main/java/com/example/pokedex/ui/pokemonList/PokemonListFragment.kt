@@ -1,4 +1,4 @@
-package com.example.pokedex.pokemonList
+package com.example.pokedex.ui.pokemonList
 
 import android.os.Bundle
 import android.util.Log
@@ -10,21 +10,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentPokemonListBinding
-import kotlinx.android.synthetic.main.fragment_pokemon_list.*
+import kotlinx.android.synthetic.main.item_pokemon.view.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class PokemonListFragment : Fragment() {
     private lateinit var binding: FragmentPokemonListBinding
-    val adapter = PokemonListAdapter()
+    private var pokemonListAdapter: PokemonListAdapter = PokemonListAdapter()
 
     private val viewModel by lazy {
-        ViewModelProvider(activity as AppCompatActivity).get(PokemonViewModel::class.java)
+        ViewModelProvider(activity as AppCompatActivity).get(PokemonListViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -33,8 +29,13 @@ class PokemonListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_pokemon_list, container, false)
-        //viewModel.loadPokemons()
+
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_pokemon_list,
+            container,
+            false
+        )
 
         return binding.root
     }
@@ -42,19 +43,14 @@ class PokemonListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.pokemonList.observe(this, Observer { listPokemons ->
-            adapter.list = listPokemons.orEmpty()
-        })
-
         val gridManager = GridLayoutManager(this.context, 2)
         binding.apply {
             recyclerView.layoutManager = gridManager
-            recyclerView.adapter = adapter
+            recyclerView.adapter = pokemonListAdapter
 
-            adapter.onClickListener = { pokemon ->
-                //val action = PokemonListFragmentDirections.goToDetailsPokemon(pokemon)
-                //findNavController().navigate(action)
-            }
+            viewModel.pokemons.observe(viewLifecycleOwner, Observer {
+                pokemonListAdapter.submitList(it)
+            })
         }
     }
 }

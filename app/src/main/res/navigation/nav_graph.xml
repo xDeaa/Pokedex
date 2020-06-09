@@ -7,8 +7,8 @@
     tools:ignore="UnusedNavigation">
     <fragment
         android:id="@+id/pokemonsList"
-        android:name="com.example.pokedex.pokemonList.PokemonListFragment"
-        android:label="PokemonListFragment" >
+        android:name="com.example.pokedex.ui.pokemonList.PokemonListFragment"
+        android:label="PokemonListFragment">
         <action
             android:id="@+id/goToDetailsPokemon"
             app:destination="@id/pokemonDetails" />
