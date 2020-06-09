@@ -7,7 +7,7 @@ import com.example.pokedex.data.PokemonsResponse
 import com.example.pokedex.network.Api
 
 class PokemonRepository {
-    private val pokemonWebServices = Api.INSTANCE.pokemonWebServices
+    /*private val pokemonWebServices = Api.INSTANCE.pokemonWebServices
 
     suspend fun getPokemons(): PokemonsResponse? {
         val response = pokemonWebServices.getPokemons()
@@ -25,5 +25,6 @@ class PokemonRepository {
         val response = pokemonWebServices.getPokemonSpecies(number)
 
         return response
-    }
+    }*
+     */
 }

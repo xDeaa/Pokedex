@@ -34,8 +34,8 @@ class PokemonDetailsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getPokemonDetails(args.pokemonNumber.orEmpty())
-        viewModel.getPokemonSpecies(args.pokemonNumber.orEmpty())
+        //viewModel.getPokemonDetails(args.pokemonNumber.orEmpty())
+        //viewModel.getPokemonSpecies(args.pokemonNumber.orEmpty())
     }
 
     override fun onCreateView(

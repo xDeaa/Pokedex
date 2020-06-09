@@ -1,3 +1,29 @@
+package com.example.pokedex.ui.pokemonList
+
+import androidx.lifecycle.ViewModel
+import androidx.paging.DataSource
+import androidx.paging.LivePagedListBuilder
+import com.example.pokedex.network.models.PokemonResult
+import com.example.pokedex.repository.PokemonPageKeyedDataSource
+import kotlinx.coroutines.MainScope
+
+class PokemonListViewModel: ViewModel()  {
+    private val viewModelScope = MainScope()
+
+    val pokemons = LivePagedListBuilder(object : DataSource.Factory<Int, PokemonResult>() {
+        override fun create(): DataSource<Int, PokemonResult> = PokemonPageKeyedDataSource(viewModelScope)
+    }, PER_PAGE).build()
+
+    companion object {
+        private const val PER_PAGE = 20
+    }
+}
+
+
+
+
+/*
+
 package com.example.pokedex.pokemonList
 
 import android.util.Log
@@ -24,7 +50,7 @@ class PokemonViewModel: ViewModel() {
     private val _pokemonSpecies = MutableLiveData<PokemonSpecies>()
     val pokemonSpecies: LiveData<PokemonSpecies> = _pokemonSpecies
 
-    /*fun loadPokemons() {
+    fun loadPokemons() {
         viewModelScope.launch {
             val pokemons: List<Pokemons> = repository.getPokemons()?.pokemons.orEmpty()
             _pokemonsList.postValue(pokemons)
@@ -43,5 +69,7 @@ class PokemonViewModel: ViewModel() {
             val pokemon: PokemonSpecies = repository.getPokemonsSpecies(number)!!
             _pokemonSpecies.postValue(pokemon)
         }
-    }*/
+    }
 }
+
+ */
