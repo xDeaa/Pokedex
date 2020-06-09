@@ -25,12 +25,12 @@
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/pokemon_number"
+                app:layout_constraintEnd_toStartOf="@+id/pokemon_id"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/pokemon_number" />
+                app:layout_constraintTop_toTopOf="@+id/pokemon_id" />
 
             <TextView
-                android:id="@+id/pokemon_number"
+                android:id="@+id/pokemon_id"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -350,18 +350,18 @@
                             tools:text="@string/exp" />
 
                         <TextView
-                            android:id="@+id/pokemon_exp"
+                            android:id="@+id/pokemon_experience"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/exp"
-                            app:layout_constraintEnd_toEndOf="@+id/exp"
-                            app:layout_constraintStart_toStartOf="@+id/exp"
+                            app:layout_constraintBottom_toTopOf="@+id/experience"
+                            app:layout_constraintEnd_toEndOf="@+id/experience"
+                            app:layout_constraintStart_toStartOf="@+id/experience"
                             app:layout_constraintTop_toTopOf="@+id/label_exp" />
 
                         <ProgressBar
-                            android:id="@+id/exp"
+                            android:id="@+id/experience"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"

@@ -15,11 +15,10 @@
     </fragment>
     <fragment
         android:id="@+id/pokemonDetails"
-        android:name="com.example.pokedex.pokemonDetails.PokemonDetailsFragment"
+        android:name="com.example.pokedex.ui.pokemonDetails.PokemonDetailsFragment"
         android:label="PokemonDetailsFragment">
         <argument
-            android:name="pokemon_number"
-            app:argType="string"
-            app:nullable="true"/>
+            android:name="pokemon_id"
+            app:argType="integer" />
     </fragment>
 </navigation>

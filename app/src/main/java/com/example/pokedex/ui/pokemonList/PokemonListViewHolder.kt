@@ -1,9 +1,9 @@
 package com.example.pokedex.ui.pokemonList
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedex.R
@@ -13,10 +13,13 @@ import kotlinx.android.synthetic.main.item_pokemon.view.*
 class PokemonListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     fun bind(pokemon: PokemonResult) {
         itemView.pokemon_name.text = pokemon.name.capitalize()
-        itemView.pokemon_number.text = pokemon.id()
+        itemView.pokemon_id.text = pokemon.id().padStart(3, '0')
 
         itemView.cardView.setOnClickListener {
-            Log.d("test", "hello")
+            val pokemonId = pokemon.id().toInt()
+
+            val action = PokemonListFragmentDirections.goToDetailsPokemon(pokemonId)
+            itemView.findNavController().navigate(action)
         }
 
         Glide.with(itemView)
