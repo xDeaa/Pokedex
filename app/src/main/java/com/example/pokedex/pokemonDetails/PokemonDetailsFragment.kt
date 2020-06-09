@@ -81,30 +81,32 @@ class PokemonDetailsFragment : Fragment() {
             }
 
             pokemonDetail.stats.forEach { stats ->
+                val baseStat = stats.base_stat.toString()
+                val stat = stats.base_stat
                 when(stats.stat.name) {
                     "hp" -> {
-                        pokemon_hp.text = stats.base_stat.toString()
-                        pokemon_exp_hp.progress = stats.base_stat
+                        pokemon_hp.text = baseStat
+                        pokemon_exp_hp.progress = stat
                     }
                     "attack" -> {
-                        pokemon_attack.text = stats.base_stat.toString()
-                        pokemon_exp_attack.progress = stats.base_stat
+                        pokemon_attack.text = baseStat
+                        pokemon_exp_attack.progress = stat
                     }
                     "defense" -> {
-                        pokemon_defense.text = stats.base_stat.toString()
-                        pokemon_exp_defense.progress = stats.base_stat
+                        pokemon_defense.text = baseStat
+                        pokemon_exp_defense.progress = stat
                     }
                     "special-attack" -> {
-                        pokemon_sp_atk.text = stats.base_stat.toString()
-                        pokemon_exp_sp_atk.progress = stats.base_stat
+                        pokemon_sp_atk.text = baseStat
+                        pokemon_exp_sp_atk.progress = stat
                     }
                     "special-defense" -> {
-                        pokemon_sp_def.text = stats.base_stat.toString()
-                        pokemon_exp_sp_def.progress = stats.base_stat
+                        pokemon_sp_def.text = baseStat
+                        pokemon_exp_sp_def.progress = stat
                     }
                     "speed" -> {
-                        pokemon_speed.text = stats.base_stat.toString()
-                        pokemon_exp_speed.progress = stats.base_stat
+                        pokemon_speed.text = baseStat
+                        pokemon_exp_speed.progress = stat
                     }
                 }
             }
