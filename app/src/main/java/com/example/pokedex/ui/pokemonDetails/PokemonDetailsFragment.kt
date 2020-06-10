@@ -62,7 +62,7 @@ class PokemonDetailsFragment : Fragment() {
             pokemon_height.text = "${it.height.toDouble().times(10).div(100)} cm"
             pokemon_weight.text = "${it.weight.toDouble().times(10).div(100)}"
 
-            val firstType = it.types[0].type.name
+            val firstType = "pokemon_types_${it.types[0].type.name}"
             pokemon_type_1.setImageResource(
                 resources.getIdentifier(
                     firstType,
@@ -74,7 +74,7 @@ class PokemonDetailsFragment : Fragment() {
             pokemon_type_2.setImageResource(0)
             // If pokemon got two Types
             if (it.types.size > 1) {
-                val secondType = it.types[1].type.name
+                val secondType = "pokemon_types_${it.types[1].type.name}"
                 pokemon_type_2.setImageResource(
                     resources.getIdentifier(
                         secondType,
